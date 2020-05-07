@@ -60,8 +60,10 @@ $(window).on('load', function(){
         let temp = '';
         for (let i = 0; i< posts.length; i++) {
 
-            temp+=`<tr><td scope="row">${posts[i].title}</td><td class="blog-post-body">${posts[i].body}</td>
-                <td><a data_index="${i}" data_id="${posts[i].id}" class="editbtn btn btn-primary btn-sm btn-outline-secondary text-white">Edit</a>
+            temp+=`<tr><td scope="row">${posts[i].title}</td>
+            <td class="blog-post-body">${posts[i].body}</td>
+                <td>
+                <a data_index="${i}" data_id="${posts[i].id}" class="editbtn btn btn-primary btn-sm btn-outline-secondary text-white">Edit</a>
                 <a data_index="${i}" data_id="${posts[i].id}" class="delbtn btn btn-danger btn-sm btn-outline-secondary text-white" data-toggle="modal" data-target="#warningModal">Delete</a></td>
             </tr>`
 
@@ -104,7 +106,7 @@ $(window).on('load', function(){
                         // Delete post from api
                         let delRequest = new Promise ((resolve,reject) => {
                             let request = new XMLHttpRequest;
-                            request.open('DELETE', `https://jsonplaceholder.typicode.com/posts/${postId}`);
+                            request.open('DELETE', `http://localhost:3000/xlarge/post/delete/post/${postId}`);
                             request.send();
                             request.onload = () => {
                                 if (request.status === 200) {
@@ -141,5 +143,10 @@ $(window).on('load', function(){
 }); // End of JQ function
 
 
+let test ="test"
 
-
+let test2 = `<div>
+                <span>
+                <i class="fa fa-plus">${test}</i>
+                </span>
+            </div> `

@@ -5,10 +5,10 @@ let displayPosts = () => {
     let temp = '';
     for (let i = 0; i< posts.length; i++) {
 
-        temp+=`<h2 class="blog-post-title">${posts[i].id}- ${posts[i].title}</h2>
-        <p class="blog-post-meta">January 1, 2014 by <a href="#">${posts[i].userId}</a></p>
+        temp+=`<strong class="d-inline-block mb-2 text-primary">${posts[i].category}</strong><h2 class="blog-post-title">${posts[i].title}</h2>
+        <p class="blog-post-meta"><a href="#">${posts[i].createdby}</a> ${posts[i].createdat}</p>
 
-        <p class="blog-post-body">${posts[i].body}</p>`
+        <p class="blog-post-body">${posts[i].content}</p>`
         document.getElementById('blogPost').innerHTML = temp;
    
     }
@@ -25,7 +25,7 @@ else {
     let getPosts = new Promise((resolve, reject) => {
         // instance XHR to interact with server
         let request = new XMLHttpRequest;
-        request.open('get', 'https://jsonplaceholder.typicode.com/posts');
+        request.open('GET', 'http://localhost:3000/xlarge/post/list');
         request.send();
         request.onload = () => {
             // Success case
